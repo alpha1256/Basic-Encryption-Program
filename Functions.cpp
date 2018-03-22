@@ -12,9 +12,9 @@ void encodePrint(std::string Message, int Key , int numbChar)
     std::cin >> passname;
     outputname = passname + ".txt";
     outfile.open(outputname.c_str());
-    outfile << "Key :" << Key <<std::endl;
-    outfile << "Number :" << numbChar <<std::endl;
-    outfile << "EnPassword :" << Message <<std::endl;
+    outfile << "Key : " << Key <<std::endl;
+    outfile << "Number : " << numbChar <<std::endl;
+    outfile << "EnPassword : " << Message <<std::endl;
 }
 
 void encoder ()
@@ -72,7 +72,7 @@ void decryptor ()
 
 void DecryptFromFile ()
 {
-    fstream infile;
+    std::fstream infile;
     std::string filename;
     std::string Open;
     std::string DecodeMess;
@@ -80,17 +80,18 @@ void DecryptFromFile ()
     char gar;
     int key;
     int numbChar;
-    cout << "Enter the name of the file that you want to decrypt from :";
-    cin >> filename;
+    std::cout << "Enter the name of the file that you want to decrypt from :";
+    std::cin >> filename;
     Open = filename + ".txt";
     infile.open(Open.c_str());
     infile >> garbage >> gar >> key;
     infile >> garbage >> gar >> numbChar;
+    infile >> garbage >> gar;
     char a[numbChar];
     for (int i=0; i < numbChar; i++)
     {
         infile >> a[i];
-        char k = a[i] - Key;
+        char k = a[i] - key;
         DecodeMess += k;
     }
     std::cout << "The decoded message is " << DecodeMess << std::endl;
