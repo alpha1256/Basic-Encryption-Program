@@ -23,7 +23,13 @@ int main()
     }
     else if (a==2)
     {
-        decryptor();
+        int option1;
+        cout << "Do you want to decrypt from file (1 for this option) or just decrypt from manual input instead (2 for this option) :";
+        cin >> option1;
+        if (option1 == 1)
+            DecryptFromFile();
+        else if (option1 ==2)
+            decryptor();
         goto back1;
     }
     else if (a==3)
