@@ -3,7 +3,7 @@
 #include <fstream>
 #include "Functions.h"
 
-void encodePrint(std::string Message, int Key )
+void encodePrint(std::string Message, int Key , int numbChar)
 {
     std::ofstream outfile;
     std::string passname;
@@ -13,6 +13,7 @@ void encodePrint(std::string Message, int Key )
     outputname = passname + ".txt";
     outfile.open(outputname.c_str());
     outfile << "Key :" << Key <<std::endl;
+    outfile << "Number :" << numbChar <<std::endl;
     outfile << "EnPassword :" << Message <<std::endl;
 }
 
@@ -41,7 +42,7 @@ void encoder ()
     std::cout << "Do you want the key and encoded message in a text file 1 for yes 2 for no :";
     std::cin >>decision;
     if (decision==1)
-        encodePrint(encodeMss, b);
+        encodePrint(encodeMss, b,numb);
     decision =0;
     std::cout << "Do you want to do another encryption 1 for yes 2 for no:";
     std::cin >> decision;
@@ -75,19 +76,22 @@ void DecryptFromFile ()
     std::string filename;
     std::string Open;
     std::string DecodeMess;
+    std::string garbage;
+    char gar;
     int key;
     int numbChar;
     cout << "Enter the name of the file that you want to decrypt from :";
     cin >> filename;
     Open = filename + ".txt";
     infile.open(Open.c_str());
-    infile >> key >> numbChar;
+    infile >> garbage >> gar >> key;
+    infile >> garbage >> gar >> numbChar;
     char a[numbChar];
     for (int i=0; i < numbChar; i++)
     {
         infile >> a[i];
         char k = a[i] - Key;
         DecodeMess += k;
-    } 
+    }
     std::cout << "The decoded message is " << DecodeMess << std::endl;
 }
