@@ -29,7 +29,7 @@ void encoder ()
     std::cin >> b;
     for (int i=0; i < numb; i++)
     {
-        std::cout << "Enter the" << i << "character to encode: ";
+        std::cout << "Enter the " << i << " character to encode: ";
         std::cin >> a[i];
         char k = a[i] + b;
         //char g = k-b;
@@ -62,7 +62,7 @@ void decryptor ()
     char a[numb];
     for (int i=0; i < numb; i++)
     {
-        std::cout << "Enter the " << i << "character to decode";
+        std::cout << "Enter the " << i << " character to decode";
         std::cin >> a[i];
         char k = a[i] - key;
         decodeMess += k;
